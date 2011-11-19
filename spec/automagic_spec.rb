@@ -19,6 +19,14 @@ describe 'autmagic' do
     `rm "#{File.dirname __FILE__}/hello.rb"`
   end
 
+  describe 'load' do
+    specify do
+      lambda {
+        load File.expand_path('../hello.rb', __FILE__)
+      }.should say "こんにちは\n"
+    end
+  end
+
   describe 'require' do
     specify do
       lambda {
