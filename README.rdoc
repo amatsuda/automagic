@@ -1,0 +1,23 @@
+= Automagic
+
+This gem makes your Ruby automatically inject the "magic comment" into your .rb files.
+
+== Supported
+
+* Ruby 1.9
+* Ruby 2.0
+
+
+==  Not Supported
+
+* require_relative
+
+
+== Contributing to Interactive RSpec
+
+* Fork, fix, then send me a pull request.
+
+
+== Copyright
+
+Copyright (c) 2011 Akira Matsuda. See MIT-LICENSE for further details.
