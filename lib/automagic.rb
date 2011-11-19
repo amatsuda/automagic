@@ -1,5 +1,23 @@
-require "automagic/version"
+#TODO require_relative
+module Kernel
+  def require_with_automagic(name)
+    require_without_automagic name
+  rescue SyntaxError => e
+    if e.message.include? 'invalid multibyte char'
+      filename = e.message.scan(/(^.*?):/).first.first
+      require 'tempfile'
+      temp = Tempfile.new('automagic_temp', File.dirname(filename))
+      temp.write "# coding: utf-8\n"
+      temp.write File.read filename
+      File.rename temp.path, filename
+      File.chmod File.stat(filename).mode, filename
+      temp.close
 
-module Automagic
-  # Your code goes here...
+      load filename
+    else
+      raise e
+    end
+  end
+  alias_method :require_without_automagic, :require
+  alias_method :require, :require_with_automagic
 end
