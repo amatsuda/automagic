@@ -13,7 +13,7 @@ This gem makes your Ruby automatically inject the "magic comment" into your .rb 
 * require_relative
 
 
-== Contributing to Interactive RSpec
+== Contributing to Automagic
 
 * Fork, fix, then send me a pull request.
 
